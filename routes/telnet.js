@@ -36,11 +36,12 @@ router.get('/', function (req, res, next) {
                             return console.log(err);
                         }
                         console.log("The file was saved!");
-                        matched = result.match(regex);
-                        console.log(matched);
                     });
+                    matched = result.match(regex);
+                    console.log(matched);
                     var log = new LogIp({
-                        content: result
+                        content: result,
+                        regexCheck: matched
                     });
                     log.save(function (err, res) {
                         if (err) {

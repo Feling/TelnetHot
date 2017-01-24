@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
 var schema = new Schema({
     content: {type: Object},
+    regexCheck: {type: String}
 
 });
 
