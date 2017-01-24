@@ -4,44 +4,54 @@ var telnet = require('telnet-client');
 var fs = require('fs');
 var router = express.Router();
 
-
+var IP = '77.138.232.161';
 
 var connection = new telnet();
-var cmd = 'tracerout  10.0.0.1';
+var cmd = `tracerout ${IP}`;
 var regex = /(CON-HOT)/g;
-var match =  [];
+var matched = [];
 
 var params = {
     host: '67.17.81.28',
     port: 23,
     shellPrompt: '>',
-    timeout: 6000
+    timeout: 500,
+    execTimeout: 20000
     // removeEcho: 4
 };
 var para = {
     execTimeout: 240000
 };
 
-connection.connect(params)
-    .then(function(prompt) {
-        connection.exec(cmd,para)
-            .then(function(res) {
-                console.log('promises result:', res);
-                fs.writeFile("/tmp/test", res, function (err) {
-                    if (err) {
-                        return console.log(err);
-                    }
-                    console.log("The first file was saved!");
-                    match = res.match(regex);
-                    console.log(match);
+router.get('/', function (req, res, next) {
+    connection.connect(params)
+        .then(function (prompt) {
+            connection.exec(cmd, para)
+                .then(function (result) {
+                    console.log('promises result:', result);
+                    fs.writeFile("/tmp/test", result, function (err) {
+                        if (err) {
+                            return console.log(err);
+                        }
+                        console.log("The file was saved!");
+                        matched = result.match(regex);
+                        console.log(matched);
+                        connection.end()
+                            .then(function (promt) {
+                                console.log("Connection ended");
+                                connection.destroy();
+                            });
+
+                    });
+                    res.status(200).json({
+                        message: 'Success',
+                        obj: result
+                    });
                 });
-            });
-    }, function(error) {
-        console.log('promises reject:', error)
-    });
-
-
-
+        }, function (error) {
+            console.log('promises reject:', error)
+        });
+});
 
 module.exports = router;
 
