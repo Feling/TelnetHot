@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
-import {Http, Response} from "@angular/http";
+import {Http, Response, Headers} from "@angular/http";
 import {Observable} from "rxjs";
+import {IP} from "./ip.model";
 @Injectable()
 export class TelnetService {
     loading: boolean;
@@ -17,5 +18,13 @@ export class TelnetService {
             })
             .catch((error: Response) => Observable.throw(error.json()));
     }
+    setIp(ip: IP){
+        const body = JSON.stringify(ip);
+        const headers = new Headers({'Content-Type': 'application/json'});
+        return this.http.post('http://localhost:3000/telnet', body, {headers: headers})
+            .map((response: Response) => {
+            const result = response.json();
+            })
 
+    }
 }
