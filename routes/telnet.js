@@ -4,6 +4,8 @@ var telnet = require('telnet-client');
 var fs = require('fs');
 var router = express.Router();
 
+var LogIp = require('../models/log');
+
 var IP = '77.138.232.161';
 
 var connection = new telnet();
@@ -36,13 +38,21 @@ router.get('/', function (req, res, next) {
                         console.log("The file was saved!");
                         matched = result.match(regex);
                         console.log(matched);
-                        connection.end()
-                            .then(function (promt) {
-                                console.log("Connection ended");
-                                connection.destroy();
-                            });
-
                     });
+                    var log = new LogIp({
+                        content: result
+                    });
+                    log.save(function (err, res) {
+                        if (err) {
+                            console.log('Not saved!')
+                        }
+                        console.log('Saved!')
+                    });
+                    connection.end()
+                        .then(function (promt) {
+                            console.log("Connection ended");
+                            connection.destroy();
+                        });
                     res.status(200).json({
                         message: 'Success',
                         obj: result
