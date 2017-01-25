@@ -1,6 +1,7 @@
-export var IP = (function () {
+var IP = (function () {
     function IP(content) {
         this.content = content;
     }
     return IP;
 }());
+export { IP };
