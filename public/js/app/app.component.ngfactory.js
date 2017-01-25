@@ -10,8 +10,8 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 import * as import1 from '@angular/core/src/linker/view';
 import * as import2 from '@angular/core/src/linker/element';
-import * as import3 from './telnet.service';
-import * as import4 from './app.component';
+import * as import3 from './app.component';
+import * as import4 from './telnet.service';
 import * as import7 from '@angular/core/src/linker/view_type';
 import * as import8 from '@angular/core/src/change_detection/change_detection';
 import * as import9 from '@angular/http/src/http';
@@ -28,23 +28,32 @@ var _View_AppComponent_Host0 = (function (_super) {
     function _View_AppComponent_Host0(viewUtils, parentInjector, declarationEl) {
         _super.call(this, _View_AppComponent_Host0, renderType_AppComponent_Host, import7.ViewType.HOST, viewUtils, parentInjector, declarationEl, import8.ChangeDetectorStatus.CheckAlways);
     }
+    Object.defineProperty(_View_AppComponent_Host0.prototype, "_TelnetService_0_5", {
+        get: function () {
+            if ((this.__TelnetService_0_5 == null)) {
+                (this.__TelnetService_0_5 = new import4.TelnetService(this.parentInjector.get(import9.Http)));
+            }
+            return this.__TelnetService_0_5;
+        },
+        enumerable: true,
+        configurable: true
+    });
     _View_AppComponent_Host0.prototype.createInternal = function (rootSelector) {
         this._el_0 = this.selectOrCreateHostElement('my-app', rootSelector, null);
         this._appEl_0 = new import2.AppElement(0, null, this, this._el_0);
         var compView_0 = viewFactory_AppComponent0(this.viewUtils, this.injector(0), this._appEl_0);
-        this._TelnetService_0_4 = new import3.TelnetService(this.parentInjector.get(import9.Http));
-        this._AppComponent_0_5 = new import4.AppComponent(this._TelnetService_0_4);
-        this._appEl_0.initComponent(this._AppComponent_0_5, [], compView_0);
-        compView_0.create(this._AppComponent_0_5, this.projectableNodes, null);
+        this._AppComponent_0_4 = new import3.AppComponent();
+        this._appEl_0.initComponent(this._AppComponent_0_4, [], compView_0);
+        compView_0.create(this._AppComponent_0_4, this.projectableNodes, null);
         this.init([].concat([this._el_0]), [this._el_0], [], []);
         return this._appEl_0;
     };
     _View_AppComponent_Host0.prototype.injectorGetInternal = function (token, requestNodeIndex, notFoundResult) {
-        if (((token === import3.TelnetService) && (0 === requestNodeIndex))) {
-            return this._TelnetService_0_4;
+        if (((token === import3.AppComponent) && (0 === requestNodeIndex))) {
+            return this._AppComponent_0_4;
         }
-        if (((token === import4.AppComponent) && (0 === requestNodeIndex))) {
-            return this._AppComponent_0_5;
+        if (((token === import4.TelnetService) && (0 === requestNodeIndex))) {
+            return this._TelnetService_0_5;
         }
         return notFoundResult;
     };
@@ -56,7 +65,7 @@ function viewFactory_AppComponent_Host0(viewUtils, parentInjector, declarationEl
     }
     return new _View_AppComponent_Host0(viewUtils, parentInjector, declarationEl);
 }
-export var AppComponentNgFactory = new import11.ComponentFactory('my-app', viewFactory_AppComponent_Host0, import4.AppComponent);
+export var AppComponentNgFactory = new import11.ComponentFactory('my-app', viewFactory_AppComponent_Host0, import3.AppComponent);
 var styles_AppComponent = [import12.styles];
 var renderType_AppComponent = null;
 var _View_AppComponent0 = (function (_super) {
@@ -75,17 +84,16 @@ var _View_AppComponent0 = (function (_super) {
         this._el_6 = this.renderer.createElement(parentRenderNode, 'app-ip', null);
         this._appEl_6 = new import2.AppElement(6, null, this, this._el_6);
         var compView_6 = import15.viewFactory_ipComponent0(this.viewUtils, this.injector(6), this._appEl_6);
-        this._ipComponent_6_4 = new import13.ipComponent(this.parentInjector.get(import3.TelnetService));
+        this._ipComponent_6_4 = new import13.ipComponent(this.parentInjector.get(import4.TelnetService));
         this._appEl_6.initComponent(this._ipComponent_6_4, [], compView_6);
         compView_6.create(this._ipComponent_6_4, [], null);
         this._text_7 = this.renderer.createText(parentRenderNode, '\n', null);
         this._el_8 = this.renderer.createElement(parentRenderNode, 'log-list', null);
         this._appEl_8 = new import2.AppElement(8, null, this, this._el_8);
         var compView_8 = import16.viewFactory_LogsComponent0(this.viewUtils, this.injector(8), this._appEl_8);
-        this._LogsComponent_8_4 = new import14.LogsComponent(this.parentInjector.get(import3.TelnetService));
+        this._LogsComponent_8_4 = new import14.LogsComponent(this.parentInjector.get(import4.TelnetService));
         this._appEl_8.initComponent(this._LogsComponent_8_4, [], compView_8);
         compView_8.create(this._LogsComponent_8_4, [], null);
-        var disposable_0 = this.renderer.listen(this._el_3, 'click', this.eventHandler(this._handle_click_3_0.bind(this)));
         this.init([], [
             this._el_0,
             this._text_1,
@@ -96,7 +104,7 @@ var _View_AppComponent0 = (function (_super) {
             this._el_6,
             this._text_7,
             this._el_8
-        ], [disposable_0], []);
+        ], [], []);
         return null;
     };
     _View_AppComponent0.prototype.injectorGetInternal = function (token, requestNodeIndex, notFoundResult) {
@@ -114,11 +122,6 @@ var _View_AppComponent0 = (function (_super) {
         }
         this.detectContentChildrenChanges(throwOnChange);
         this.detectViewChildrenChanges(throwOnChange);
-    };
-    _View_AppComponent0.prototype._handle_click_3_0 = function ($event) {
-        this.markPathToRootAsCheckOnce();
-        var pd_0 = (this.context.doTest() !== false);
-        return (true && pd_0);
     };
     return _View_AppComponent0;
 }(import1.AppView));

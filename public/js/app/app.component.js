@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { TelnetService } from "./telnet.service";
 export var AppComponent = (function () {
-    function AppComponent(telnetService) {
-        this.telnetService = telnetService;
+    function AppComponent() {
     }
-    AppComponent.prototype.doTest = function () {
-        this.telnetService.getData()
-            .subscribe(function (result) { return console.log(JSON.stringify(result)); });
-    };
     AppComponent.decorators = [
         { type: Component, args: [{
                     selector: 'my-app',
@@ -17,8 +12,6 @@ export var AppComponent = (function () {
                 },] },
     ];
     /** @nocollapse */
-    AppComponent.ctorParameters = [
-        { type: TelnetService, },
-    ];
+    AppComponent.ctorParameters = [];
     return AppComponent;
 }());

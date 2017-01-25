@@ -9,11 +9,4 @@ import {TelnetService} from "./telnet.service";
 })
 export class AppComponent {
 
-    constructor(private telnetService: TelnetService){}
-    doTest(){
-        this.telnetService.getData()
-            .subscribe(
-                result => console.log(JSON.stringify(result))
-            )
-    }
 }
