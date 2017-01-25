@@ -10,7 +10,7 @@ var appRoutes = require('./routes/app');
 var telnetRoutes = require('./routes/telnet');
 
 var app = express();
-mongoose.connect('localhost:27017/telnet');
+mongoose.connect('admin:admin@ds131119.mlab.com:31119/telnet');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

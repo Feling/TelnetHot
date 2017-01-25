@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TelnetService} from "./telnet.service";
+import {Observable} from "rxjs";
 
 @Component({
     selector: 'log-list',
@@ -14,15 +15,24 @@ import {TelnetService} from "./telnet.service";
 export class LogsComponent implements OnInit {
     logs: Log[];
 
-    constructor( private telnetService: TelnetService) { }
+    constructor(private telnetService: TelnetService) {
+    }
 
     ngOnInit() {
-        this.telnetService.getData()
+       this.onPooling()
             .subscribe(
-                (logs: Log[]) =>{
+                (logs: Log[]) => {
                     this.logs = logs;
                 }
             );
+    }
+
+    onPooling() {
+        return Observable
+            .interval(16000)
+            .flatMap(() => {
+                return  this.telnetService.getData();
+            });
     }
 
 }

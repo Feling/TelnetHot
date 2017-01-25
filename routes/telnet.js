@@ -41,7 +41,7 @@ router.post('/',function (req, res,next) {
 
 
     var para = {
-        execTimeout: 240000
+        execTimeout: 240000,
     };
     connection.connect(params)
         .then(function (prompt) {

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TelnetService} from "./telnet.service";
 import {IP} from "./ip.model";
+import {Observable} from "rxjs";
 
 @Component({
     selector: 'app-ip',
@@ -17,12 +18,19 @@ export class ipComponent {
     }
 
     sendIp() {
-        const ip = new IP(this.value);
-        this.telnetService.setIp(ip)
+        this.onPooling()
             .subscribe(
                 data => console.log(data),
                 error => console.error(error)
             );
+    }
+    onPooling() {
+        const ip = new IP(this.value);
+        return Observable
+            .interval(15000)
+            .flatMap(() => {
+                return   this.telnetService.setIp(ip);
+            });
     }
 }
 
