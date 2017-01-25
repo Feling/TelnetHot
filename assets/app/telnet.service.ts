@@ -9,7 +9,7 @@ export class TelnetService {
 
     getData(){
         this.loading = true;
-        return this.http.get('http://localhost:3000/telnet')
+        return this.http.get('https://telnet-app.herokuapp.com//telnet')
             .map((response: Response)=> {
                 const messages = response.json().obj;
                 console.log(messages);
@@ -21,7 +21,7 @@ export class TelnetService {
     setIp(ip: IP){
         const body = JSON.stringify(ip);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('http://localhost:3000/telnet', body, {headers: headers})
+        return this.http.post('https://telnet-app.herokuapp.com/telnet', body, {headers: headers})
             .map((response: Response) => {
             const result = response.json();
             })
