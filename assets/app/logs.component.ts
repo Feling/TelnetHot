@@ -40,7 +40,7 @@ export class LogsComponent implements OnInit {
 
     onPooling() {
         return Observable
-            .interval(2000)
+            .interval(30000)
             .flatMap(() => {
                 return  this.telnetService.getData();
             });

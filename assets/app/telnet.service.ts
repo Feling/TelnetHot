@@ -9,7 +9,7 @@ export class TelnetService {
 
     getData(){
         this.loading = true;
-        return this.http.get('https://telnet-app.herokuapp.com/telnet')
+        return this.http.get('https://telnet-app.herokuapp.com//telnet')
             .map((response: Response)=> {
                 const messages = response.json().obj;
                 console.log(messages);
