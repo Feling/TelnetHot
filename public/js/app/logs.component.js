@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TelnetService } from "./telnet.service";
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/Rx';
 export var LogsComponent = (function () {
     function LogsComponent(telnetService) {
         this.telnetService = telnetService;
