@@ -7,7 +7,7 @@ var router = express.Router();
 var LogIp = require('../models/log');
 
 
-router.get('/', function (req, res, next) {
+router.get('/', function (req, res) {
         LogIp.find()
             .exec(function (err, logs) {
                 if (err) {
