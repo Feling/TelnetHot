@@ -15,7 +15,7 @@ export var LogsComponent = (function () {
     LogsComponent.prototype.onPooling = function () {
         var _this = this;
         return Observable
-            .interval(16000)
+            .interval(2000)
             .flatMap(function () {
             return _this.telnetService.getData();
         });
