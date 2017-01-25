@@ -6,6 +6,14 @@ export var LogsComponent = (function () {
         this.telnetService = telnetService;
     }
     LogsComponent.prototype.ngOnInit = function () {
+        /*    this.onPooling()
+                 .subscribe(
+                     (logs: Log[]) => {
+                         this.logs = logs;
+                     }
+                 );*/
+    };
+    LogsComponent.prototype.onButton = function () {
         var _this = this;
         this.onPooling()
             .subscribe(function (logs) {
@@ -23,7 +31,7 @@ export var LogsComponent = (function () {
     LogsComponent.decorators = [
         { type: Component, args: [{
                     selector: 'log-list',
-                    template: "\n            <div class=\"col-md-8 col-md-offset2\">\n            <app-log\n                [log]=\"log\"\n                *ngFor=\"let log of logs\"></app-log>\n</div>\n                "
+                    template: "\n<button (click)=\"onButton()\">Click me</button>\n            <div class=\"col-md-8 col-md-offset2\">\n            <app-log\n                [log]=\"log\"\n                *ngFor=\"let log of logs\"></app-log>\n</div>\n                "
                 },] },
     ];
     /** @nocollapse */

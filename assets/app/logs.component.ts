@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 @Component({
     selector: 'log-list',
     template: `
+<button (click)="onButton()">Click me</button>
             <div class="col-md-8 col-md-offset2">
             <app-log
                 [log]="log"
@@ -19,7 +20,16 @@ export class LogsComponent implements OnInit {
     }
 
     ngOnInit() {
-       this.onPooling()
+   /*    this.onPooling()
+            .subscribe(
+                (logs: Log[]) => {
+                    this.logs = logs;
+                }
+            );*/
+    }
+
+    onButton(){
+        this.onPooling()
             .subscribe(
                 (logs: Log[]) => {
                     this.logs = logs;

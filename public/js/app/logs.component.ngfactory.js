@@ -69,56 +69,68 @@ var _View_LogsComponent0 = (function (_super) {
     }
     _View_LogsComponent0.prototype.createInternal = function (rootSelector) {
         var parentRenderNode = this.renderer.createViewRoot(this.declarationAppElement.nativeElement);
-        this._text_0 = this.renderer.createText(parentRenderNode, '\n            ', null);
-        this._el_1 = this.renderer.createElement(parentRenderNode, 'div', null);
-        this.renderer.setElementAttribute(this._el_1, 'class', 'col-md-8 col-md-offset2');
-        this._text_2 = this.renderer.createText(this._el_1, '\n            ', null);
-        this._anchor_3 = this.renderer.createTemplateAnchor(this._el_1, null);
-        this._appEl_3 = new import2.AppElement(3, 1, this, this._anchor_3);
-        this._TemplateRef_3_5 = new import12.TemplateRef_(this._appEl_3, viewFactory_LogsComponent1);
-        this._NgFor_3_6 = new import11.NgFor(this._appEl_3.vcRef, this._TemplateRef_3_5, this.parentInjector.get(import13.IterableDiffers), this.ref);
-        this._text_4 = this.renderer.createText(this._el_1, '\n', null);
-        this._text_5 = this.renderer.createText(parentRenderNode, '\n                ', null);
-        this._expr_0 = import7.UNINITIALIZED;
+        this._text_0 = this.renderer.createText(parentRenderNode, '\n', null);
+        this._el_1 = this.renderer.createElement(parentRenderNode, 'button', null);
+        this._text_2 = this.renderer.createText(this._el_1, 'Click me', null);
+        this._text_3 = this.renderer.createText(parentRenderNode, '\n            ', null);
+        this._el_4 = this.renderer.createElement(parentRenderNode, 'div', null);
+        this.renderer.setElementAttribute(this._el_4, 'class', 'col-md-8 col-md-offset2');
+        this._text_5 = this.renderer.createText(this._el_4, '\n            ', null);
+        this._anchor_6 = this.renderer.createTemplateAnchor(this._el_4, null);
+        this._appEl_6 = new import2.AppElement(6, 4, this, this._anchor_6);
+        this._TemplateRef_6_5 = new import12.TemplateRef_(this._appEl_6, viewFactory_LogsComponent1);
+        this._NgFor_6_6 = new import11.NgFor(this._appEl_6.vcRef, this._TemplateRef_6_5, this.parentInjector.get(import13.IterableDiffers), this.ref);
+        this._text_7 = this.renderer.createText(this._el_4, '\n', null);
+        this._text_8 = this.renderer.createText(parentRenderNode, '\n                ', null);
+        var disposable_0 = this.renderer.listen(this._el_1, 'click', this.eventHandler(this._handle_click_1_0.bind(this)));
+        this._expr_1 = import7.UNINITIALIZED;
         this.init([], [
             this._text_0,
             this._el_1,
             this._text_2,
-            this._anchor_3,
-            this._text_4,
-            this._text_5
-        ], [], []);
+            this._text_3,
+            this._el_4,
+            this._text_5,
+            this._anchor_6,
+            this._text_7,
+            this._text_8
+        ], [disposable_0], []);
         return null;
     };
     _View_LogsComponent0.prototype.injectorGetInternal = function (token, requestNodeIndex, notFoundResult) {
-        if (((token === import12.TemplateRef) && (3 === requestNodeIndex))) {
-            return this._TemplateRef_3_5;
+        if (((token === import12.TemplateRef) && (6 === requestNodeIndex))) {
+            return this._TemplateRef_6_5;
         }
-        if (((token === import11.NgFor) && (3 === requestNodeIndex))) {
-            return this._NgFor_3_6;
+        if (((token === import11.NgFor) && (6 === requestNodeIndex))) {
+            return this._NgFor_6_6;
         }
         return notFoundResult;
     };
     _View_LogsComponent0.prototype.detectChangesInternal = function (throwOnChange) {
         var changes = null;
         changes = null;
-        var currVal_0 = this.context.logs;
-        if (import4.checkBinding(throwOnChange, this._expr_0, currVal_0)) {
-            this._NgFor_3_6.ngForOf = currVal_0;
+        var currVal_1 = this.context.logs;
+        if (import4.checkBinding(throwOnChange, this._expr_1, currVal_1)) {
+            this._NgFor_6_6.ngForOf = currVal_1;
             if ((changes === null)) {
                 (changes = {});
             }
-            changes['ngForOf'] = new import7.SimpleChange(this._expr_0, currVal_0);
-            this._expr_0 = currVal_0;
+            changes['ngForOf'] = new import7.SimpleChange(this._expr_1, currVal_1);
+            this._expr_1 = currVal_1;
         }
         if ((changes !== null)) {
-            this._NgFor_3_6.ngOnChanges(changes);
+            this._NgFor_6_6.ngOnChanges(changes);
         }
         if (!throwOnChange) {
-            this._NgFor_3_6.ngDoCheck();
+            this._NgFor_6_6.ngDoCheck();
         }
         this.detectContentChildrenChanges(throwOnChange);
         this.detectViewChildrenChanges(throwOnChange);
+    };
+    _View_LogsComponent0.prototype._handle_click_1_0 = function ($event) {
+        this.markPathToRootAsCheckOnce();
+        var pd_0 = (this.context.onButton() !== false);
+        return (true && pd_0);
     };
     return _View_LogsComponent0;
 }(import1.AppView));
