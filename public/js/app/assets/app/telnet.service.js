@@ -17,7 +17,7 @@ var TelnetService = (function () {
     TelnetService.prototype.getData = function () {
         var _this = this;
         this.loading = true;
-        return this.http.get('https://telnet-app.herokuapp.com//telnet')
+        return this.http.get('https://telnet-app.herokuapp.com/telnet')
             .map(function (response) {
             var messages = response.json().obj;
             console.log(messages);

@@ -33,7 +33,7 @@ var LogsComponent = (function () {
     LogsComponent.prototype.onPooling = function () {
         var _this = this;
         return Observable
-            .interval(30000)
+            .interval(500)
             .flatMap(function () {
             return _this.telnetService.getData();
         });
