@@ -22,7 +22,8 @@ export class ipComponent {
             .subscribe(
                 data => console.log(data),
                 error => console.error(error)
-            );
+            )
+            .unsubscribe();
     }
     onPooling() {
         const ip = new IP(this.value);

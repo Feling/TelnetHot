@@ -21,7 +21,8 @@ var ipComponent = (function () {
     };
     ipComponent.prototype.sendIp = function () {
         this.onPooling()
-            .subscribe(function (data) { return console.log(data); }, function (error) { return console.error(error); });
+            .subscribe(function (data) { return console.log(data); }, function (error) { return console.error(error); })
+            .unsubscribe();
     };
     ipComponent.prototype.onPooling = function () {
         var _this = this;
