@@ -22,13 +22,13 @@ export class ipComponent {
             .subscribe(
                 data => console.log(data),
                 error => console.error(error)
-            )
-            .unsubscribe();
+            );
+
     }
     onPooling() {
         const ip = new IP(this.value);
         return Observable
-            .interval(30000)
+            .interval(3000)
             .map(() => {
                 return   this.telnetService.setIp(ip);
             });

@@ -21,14 +21,13 @@ var ipComponent = (function () {
     };
     ipComponent.prototype.sendIp = function () {
         this.onPooling()
-            .subscribe(function (data) { return console.log(data); }, function (error) { return console.error(error); })
-            .unsubscribe();
+            .subscribe(function (data) { return console.log(data); }, function (error) { return console.error(error); });
     };
     ipComponent.prototype.onPooling = function () {
         var _this = this;
         var ip = new IP(this.value);
         return Observable
-            .interval(30000)
+            .interval(3000)
             .map(function () {
             return _this.telnetService.setIp(ip);
         });
