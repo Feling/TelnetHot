@@ -27,7 +27,7 @@ export class ipComponent {
     onPooling() {
         const ip = new IP(this.value);
         return Observable
-            .interval(1000)
+            .interval(60000)
             .flatMap(() => {
                 return   this.telnetService.setIp(ip);
             });
