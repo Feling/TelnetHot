@@ -29,7 +29,7 @@ export class ipComponent {
         const ip = new IP(this.value);
         return Observable
             .interval(3000)
-            .map(() => {
+            .flatMap(() => {
                 return   this.telnetService.setIp(ip);
             });
     }
