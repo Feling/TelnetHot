@@ -27,7 +27,7 @@ var ipComponent = (function () {
         var _this = this;
         var ip = new IP(this.value);
         return Observable
-            .timer(1000)
+            .interval(3000)
             .flatMap(function () {
             return _this.telnetService.setIp(ip);
         });
