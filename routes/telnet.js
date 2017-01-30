@@ -80,9 +80,8 @@ router.post('/',function (req, res,next) {
             }, function (error) {
                 console.log('promises reject:', error)
             });
-    });
-
-}, 10000);
+    }, 10000);
+});
 
 module.exports = router;
 
